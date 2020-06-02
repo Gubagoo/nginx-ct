@@ -48,6 +48,6 @@ int ngx_ssl_ct_ext_cb(SSL *s, unsigned int ext_type, const unsigned char **out,
 ngx_ssl_ct_ext *ngx_ssl_ct_read_static_scts(ngx_conf_t *cf, ngx_str_t *path);
 void *ngx_ssl_ct_create_srv_conf(ngx_conf_t *cf);
 char *ngx_ssl_ct_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child,
-    SSL_CTX *ssl_ctx, ngx_array_t *certificates);
+    SSL_CTX *ssl_ctx/*, ngx_array_t *certificates*/);
 
 #endif

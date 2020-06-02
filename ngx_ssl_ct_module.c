@@ -71,7 +71,7 @@ void *ngx_ssl_ct_create_srv_conf(ngx_conf_t *cf) {
 }
 
 char *ngx_ssl_ct_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child,
-    SSL_CTX *ssl_ctx, ngx_array_t *certificates) {
+    SSL_CTX *ssl_ctx/*, ngx_array_t *certificates*/) {
     /* merge config */
     ngx_ssl_ct_srv_conf_t *prev = parent;
     ngx_ssl_ct_srv_conf_t *conf = child;
@@ -100,12 +100,12 @@ char *ngx_ssl_ct_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child,
 
     /* check we have one SCT dir for each certificate */
     ngx_uint_t sct_dir_count = conf->sct_dirs->nelts;
-    if (sct_dir_count != certificates->nelts) {
-        ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
-            "there must be exactly one \"ssl_ct_static_scts\" directive for "
-            "each \"ssl_certificate\" directive");
-        return NGX_CONF_ERROR;
-    }
+//    if (sct_dir_count != certificates->nelts) {
+//        ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
+//            "there must be exactly one \"ssl_ct_static_scts\" directive for "
+//            "each \"ssl_certificate\" directive");
+//        return NGX_CONF_ERROR;
+//    }
 
     /* loop through all the certs/SCT dirs */
     ngx_str_t *sct_dirs = conf->sct_dirs->elts;
